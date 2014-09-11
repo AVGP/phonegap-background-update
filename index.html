@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="phonegap.js"></script>
+    </head>
+    <body>
+        <div id="counter"></div>
+        <script>
+            document.addEventListener("deviceready", function() {
+                setTimeout(function countUp() {
+                    var count = parseInt(localStorage.getItem("counter"), 10);
+                    count++;
+                    document.getElementById("counter").textContent = count;
+                    localStorage.setItem("counter", count);
+                    setTimeout(countUp, 60000);
+                }, 60000);
+            }, false);
+        </script>
+    </body>
+</html>
