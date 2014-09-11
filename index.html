@@ -6,14 +6,16 @@
     <body>
         <div id="counter"></div>
         <script>
+            function countUp() {
+                var count = parseInt(localStorage.getItem("counter") || "0", 10);
+                count++;
+                document.getElementById("counter").textContent = count;
+                localStorage.setItem("counter", count);
+                setTimeout(countUp, 10000);
+            }
+        
             document.addEventListener("deviceready", function() {
-                setTimeout(function countUp() {
-                    var count = parseInt(localStorage.getItem("counter"), 10);
-                    count++;
-                    document.getElementById("counter").textContent = count;
-                    localStorage.setItem("counter", count);
-                    setTimeout(countUp, 60000);
-                }, 60000);
+                countUp();
             }, false);
         </script>
     </body>
